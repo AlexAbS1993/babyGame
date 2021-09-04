@@ -1,0 +1,18 @@
+@media (orientation: landscape) {
+    .container {
+        width: 100%;
+        height: 100vh;
+        background-color: var(--primary-color);
+    }
+    .container__menu{
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+}
+
+@media screen and (min-width: 1366px), screen and (orientation: portrait) {
+    .container {
+        display: none;
+    }
+}
