@@ -13,5 +13,10 @@ export const letters = [
         big: "В",
         little: 'в',
         english: "Ve"
+    },
+    {
+        big: "Г",
+        little: 'г',
+        english: "G"
     }
 ]

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Presentation } from "./Presentation"
-import classes from './WordsGame.module.css'
+import { Quiz } from "./Quiz"
 
 export const WordsGame = () => {
     const [stage, setStage] = useState<'presentation'|"quiz">("presentation")
@@ -10,10 +10,10 @@ export const WordsGame = () => {
             (() => {
                 switch (stage){
                     case "presentation": { 
-                        return <Presentation />
+                        return <Presentation setStage={setStage}/>
                     }
                     case "quiz": {
-                        return
+                        return <Quiz />
                     }
                     default: return false
                 }

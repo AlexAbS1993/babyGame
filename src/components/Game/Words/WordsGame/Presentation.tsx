@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { wordChooser } from "./functions"
 import classes from './WordsGame.module.css'
 
-export const Presentation = () => {
+export const Presentation:FC<{
+    setStage: any
+}> = ({setStage}) => {
     const [words, setWords] = useState<any>([])
     const [initialize, setInitialize] = useState(false)
     const [step, setStep] = useState(0)
     const [startPos, setStartPos] = useState(0)
     useEffect(() => {
-        setWords(wordChooser(3))
+        setWords(wordChooser(4))
         setInitialize(true)
     }, [])
     return (
@@ -40,7 +42,7 @@ export const Presentation = () => {
 
             >
             <section className={classes.gameField__letter}>
-            <h1>{words[step].big}</h1>
+            <h1 key={words[step].big}>{words[step].big}</h1>
             </section>
             <section className={classes.gameField__images}>
                 {
@@ -50,6 +52,13 @@ export const Presentation = () => {
                     })
                 }
             </section>
+            <div className={`${classes.buttonNextStep} ${step === 3 ? classes.buttonNextStep_visible : classes.buttonNextStep_hidden}`}>
+                <button
+                onClick={(e) => {
+                    console.log('next step')
+                }}
+                >Следующий шаг</button>
+            </div>
         </div>
         }
         </>

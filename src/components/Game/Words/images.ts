@@ -4,11 +4,13 @@ import bananas from './svg/bananas.svg'
 import squirrel from './svg/squirrel.svg'
 import vishnya from './svg/vishnya.svg'
 import vilka from './svg/vilka.svg'
+import gnezdo from './svg/gnezdo.svg'
+import golub from './svg/golub.svg'
 
 type imagesList = {
     [key: string]: {
         title: string,
-        cathegory: "animals"|"fruit"|"backaly"|"berry"|'kitchen',
+        cathegory: "animals"|"fruit"|"backaly"|"berry"|'kitchen'|"home",
         svg: any,
         discription: string
     }[]
@@ -49,5 +51,16 @@ export const images: imagesList = {
             cathegory: 'berry',
             discription:"Вишня. А могла бы быть черешней",
             svg: vishnya}  
+    ],
+    'G': [
+        {
+            title: "Гнездо",
+            cathegory: "home",
+            discription:"Домик для птиц",
+            svg: gnezdo}, {
+            title: "Голубь",
+            cathegory: 'animals',
+            discription:"Курлык курлык дай хлеба а то что смотришь",
+            svg: golub}  
     ]
 }
