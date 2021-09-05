@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import classes from './Menu.module.css'
 import { buttonsMainMenuTypes } from './Menu.types'
 import { useHistory } from "react-router-dom"
@@ -40,7 +40,11 @@ const newGameButtons: buttonsMainMenuTypes[] = [
     }
 ]
 
-export const Menu = () => {
+type MenuTypes = {
+    setStage: (str: 'menu'|'game') => void
+}
+
+export const Menu:FC<MenuTypes> = ({setStage}) => {
     const [buttonsStage, setButtonsStage] = useState<{touchStart: boolean}[]>([])
     const [subMenu, setSubMenu] = useState<string>('root')
     const [initialize, setInitialize] = useState(false)
@@ -95,11 +99,26 @@ export const Menu = () => {
                                                         setSubMenu(buttonElement.title)
                                                     }
                                                     else if (buttonElement.option === 'page'){
-                                                        if (buttonElement.title === "Автор"){
-                                                            history.push("/author")
-                                                        }
-                                                        else if (buttonElement.title === "Настройки"){
-                                                            history.push("/settings")
+                                                        switch(buttonElement.title) {
+                                                            case "Автор": {
+                                                                history.push("/author")
+                                                                return
+                                                            }
+                                                            case "Настройки": {
+                                                                history.push("/settings")
+                                                                return
+                                                            }
+                                                            case "Буквы и слова": {
+                                                                setStage('game')
+                                                                history.push('/gameWords')
+                                                                return
+                                                            }
+                                                            case "Животные": {
+                                                                setStage('game')
+                                                                history.push('/gameAnimals')
+                                                                return
+                                                            }
+                                                            default: return false
                                                         }
                                                     }
                                                 }}
