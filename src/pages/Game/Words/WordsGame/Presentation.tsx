@@ -1,23 +1,16 @@
-import { FC, useEffect, useState } from "react"
-import { wordChooser } from "./functions"
+import { FC, useState } from "react"
 import classes from './WordsGame.module.css'
 
 export const Presentation:FC<{
-    setStage: any
-}> = ({setStage}) => {
-    const [words, setWords] = useState<any>([])
-    const [initialize, setInitialize] = useState(false)
+    setStage: any,
+    words: any
+}> = ({setStage, words}) => {
     const [step, setStep] = useState(0)
     const [startPos, setStartPos] = useState(0)
-    useEffect(() => {
-        setWords(wordChooser(4))
-        setInitialize(true)
-    }, [])
+    const [gameStageEnd, setGameStageEnd] = useState(false)
     return (
         <>
-            {
-            initialize && 
-            <div className={classes.gameField} 
+            <div className={`${classes.gameField} ${gameStageEnd ? classes.gameField_gone : classes.gameField_active}`} 
             onTouchStart={(e) => {
                 setStartPos(e.touches[0].clientX)
             }}
@@ -52,15 +45,19 @@ export const Presentation:FC<{
                     })
                 }
             </section>
-            <div className={`${classes.buttonNextStep} ${step === 3 ? classes.buttonNextStep_visible : classes.buttonNextStep_hidden}`}>
+            <div className={`${classes.buttonNextStep} ${step === 2 ? classes.buttonNextStep_visible : classes.buttonNextStep_hidden}`}>
                 <button
                 onClick={(e) => {
                     console.log('next step')
+                    setGameStageEnd(true)
+                    setTimeout(() => {
+                        setStage("quiz")
+                        setGameStageEnd(false)
+                    }, 3000)
                 }}
-                >Следующий шаг</button>
+                ></button>
             </div>
         </div>
-        }
         </>
     )
 }

@@ -18,5 +18,15 @@ export const letters = [
         big: "Г",
         little: 'г',
         english: "G"
+    },
+    {
+        big: "Д",
+        little: "д",
+        english: "D"
+    },
+    {
+        big: "Е",
+        little: "е",
+        english: "E"
     }
 ]

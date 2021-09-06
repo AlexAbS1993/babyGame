@@ -19,8 +19,13 @@ code {
     monospace;
 }
 :root{
+  --game-color: #F55693;
   --primary-color: #F54013;
   --border-color: #F51D28;
   --button-background-color: #F5B000;
   --button-font-size: 1.4em;
+}
+button {
+  outline: none;
+  border: none;
 }

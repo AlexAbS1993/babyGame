@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import classes from './Menu.module.css'
-import { buttonsMainMenuTypes } from './Menu.types'
+import { buttonsMainMenuTypes, MenuTypes } from './Menu.types'
 import { useHistory } from "react-router-dom"
 import { MenuWrapper } from './MenuWrapper/MenuWrapper'
 import paw from '../../assets/menuIcons/paw.svg'
@@ -40,9 +40,6 @@ const newGameButtons: buttonsMainMenuTypes[] = [
     }
 ]
 
-type MenuTypes = {
-    setStage: (str: 'menu'|'game') => void
-}
 
 export const Menu:FC<MenuTypes> = ({setStage}) => {
     const [buttonsStage, setButtonsStage] = useState<{touchStart: boolean}[]>([])

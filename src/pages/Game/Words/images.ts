@@ -6,11 +6,15 @@ import vishnya from './svg/vishnya.svg'
 import vilka from './svg/vilka.svg'
 import gnezdo from './svg/gnezdo.svg'
 import golub from './svg/golub.svg'
+import enot from './svg/enot.svg'
+import evang from './svg/evang.svg'
+import house from './svg/house.svg'
+import derevo from './svg/derevo.svg'
 
 type imagesList = {
     [key: string]: {
         title: string,
-        cathegory: "animals"|"fruit"|"backaly"|"berry"|'kitchen'|"home",
+        cathegory: "animals"|"fruit"|"backaly"|"berry"|'kitchen'|"home"|"nature",
         svg: any,
         discription: string
     }[]
@@ -62,5 +66,27 @@ export const images: imagesList = {
             cathegory: 'animals',
             discription:"Курлык курлык дай хлеба а то что смотришь",
             svg: golub}  
-    ]
+    ],
+    "D": [
+        {
+            title: "Дом",
+            cathegory: "home",
+            discription:"Дом, где мы живём",
+            svg: house}, {
+            title: "Дерево",
+            cathegory: 'nature',
+            discription:"Большое и могучее дерево дуб",
+            svg: derevo}  
+            ],
+    "E": [
+        {
+            title: "Енот",
+            cathegory: "animals",
+            discription:"Крошка енот",
+            svg: enot}, {
+            title: "Евангелие от Иоанна",
+            cathegory: "home",
+            discription:"Евангелие от Иоанна",
+            svg: evang}  
+            ]
 }

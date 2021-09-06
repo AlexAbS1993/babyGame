@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Route } from 'react-router';
 import classes from './App.module.css';
+import { stageAppType } from './App.types';
 import { Author } from './Author/Author';
 import { WordsGame } from './Game/Words/WordsGame/WordsGame';
 import { Menu } from './Menu/Menu';
@@ -12,16 +13,16 @@ const hierarchy = [
 ]
 
 function App() {
-  const [stage, setStage] = useState<'menu'|'game'>('menu')
+  const [stage, setStage] = useState<stageAppType>('menu')
   return (
     <>
       <Response />
-      <div className={classes.container}>
+      <div className={classes.appContainer}>
           {
             (() => {
               switch(stage){
                 case "menu": {
-                  return <nav className={`${classes.container__menu} ${classes.menu}`}>
+                  return <nav className={`${classes.appContainer__menu} ${classes.menu}`}>
                     <Route path='/author' component={Author}/>
                     <Route path="/" exact render={() => {
                       return <Menu setStage={setStage}/>
@@ -29,7 +30,7 @@ function App() {
                         </nav>
                 }
                 case "game": {
-                  return <main className={classes.container__gameScreen}>
+                  return <main className={classes.appContainer__gameScreen}>
                     <Route path='/gameWords' component={WordsGame}/>
                   </main>
                 }
