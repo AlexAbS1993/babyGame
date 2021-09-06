@@ -8,6 +8,7 @@ import poet from '../../assets/menuIcons/poet.svg'
 import settings from '../../assets/menuIcons/settings.svg'
 import V from '../../assets/menuIcons/V.svg'
 import cat from '../../assets/menuIcons/cat.svg'
+import { MenuButtonWrapper } from './ButtonsWrapper/MenuButtonWrapper'
 
 const buttons: buttonsMainMenuTypes[] = [
     {
@@ -45,7 +46,6 @@ export const Menu:FC<MenuTypes> = ({setStage}) => {
     const [buttonsStage, setButtonsStage] = useState<{touchStart: boolean}[]>([])
     const [subMenu, setSubMenu] = useState<string>('root')
     const [initialize, setInitialize] = useState(false)
-    const history = useHistory()
     // ==== СОЗДАНИЕ ОБЪЕКТА СОСТОЯНИЯ КНОПОК ==== //
     useEffect(() => {
         let buttonsStageInitial:{touchStart: boolean}[] = []
@@ -78,52 +78,62 @@ export const Menu:FC<MenuTypes> = ({setStage}) => {
                                                     }
                                                 })().map((buttonElement, index) => {
                                                     
-                                                return <button key={buttonElement.title} 
-                                                // ==== ОБРАБОТКА КАСАНИЯ ==== //
-                                                onTouchStart={(e) => {
-                                                    let newState = [...buttonsStage]
-                                                    newState[index].touchStart = true
-                                                    setButtonsStage(newState)
-                                                }}
-                                                // ==== ОБРАБОТКА ЗАВЕРШЕНИЯ КАСАНИЯ ==== //
-                                                onTouchEnd={(e) => {
-                                                    let newState = [...buttonsStage]
-                                                    newState[index].touchStart = false
-                                                    setButtonsStage(newState)
-                                                }}
-                                                onClick={(e) => {
-                                                    if (buttonElement.option === 'submenu'){
-                                                        setSubMenu(buttonElement.title)
-                                                    }
-                                                    else if (buttonElement.option === 'page'){
-                                                        switch(buttonElement.title) {
-                                                            case "Автор": {
-                                                                history.push("/author")
-                                                                return
-                                                            }
-                                                            case "Настройки": {
-                                                                history.push("/settings")
-                                                                return
-                                                            }
-                                                            case "Буквы и слова": {
-                                                                setStage('game')
-                                                                history.push('/gameWords')
-                                                                return
-                                                            }
-                                                            case "Животные": {
-                                                                setStage('game')
-                                                                history.push('/gameAnimals')
-                                                                return
-                                                            }
-                                                            default: return false
-                                                        }
-                                                    }
-                                                }}
-                                                // ==== СМЕНА КЛАССА В ЗАВИСИМОСТИ ОТ СОСТОЯНИЯ КНОПКИ ==== //
-                                                className={`${classes.menu__button} ${buttonsStage[index].touchStart ? classes.touchedButton : classes.simpleButton}`}
-                                                ><h3>{ buttonElement.svg &&
-                                                    <img className={classes.menu__icon} src={buttonElement.svg}/>}
-                                                    {buttonElement.title}</h3></button>
+                                                return <MenuButtonWrapper 
+                                                buttonsStage={buttonsStage}
+                                                setButtonsStage={setButtonsStage}
+                                                buttonElement={buttonElement}
+                                                index={index}
+                                                setSubMenu={setSubMenu}
+                                                setStage={setStage}
+                                                key={buttonElement.title}
+                                                />
+                                                
+                                                // <button key={buttonElement.title} 
+                                                // // ==== ОБРАБОТКА КАСАНИЯ ==== //
+                                                // onTouchStart={(e) => {
+                                                //     let newState = [...buttonsStage]
+                                                //     newState[index].touchStart = true
+                                                //     setButtonsStage(newState)
+                                                // }}
+                                                // // ==== ОБРАБОТКА ЗАВЕРШЕНИЯ КАСАНИЯ ==== //
+                                                // onTouchEnd={(e) => {
+                                                //     let newState = [...buttonsStage]
+                                                //     newState[index].touchStart = false
+                                                //     setButtonsStage(newState)
+                                                // }}
+                                                // onClick={(e) => {
+                                                //     if (buttonElement.option === 'submenu'){
+                                                //         setSubMenu(buttonElement.title)
+                                                //     }
+                                                //     else if (buttonElement.option === 'page'){
+                                                //         switch(buttonElement.title) {
+                                                //             case "Автор": {
+                                                //                 history.push("/author")
+                                                //                 return
+                                                //             }
+                                                //             case "Настройки": {
+                                                //                 history.push("/settings")
+                                                //                 return
+                                                //             }
+                                                //             case "Буквы и слова": {
+                                                //                 setStage('game')
+                                                //                 history.push('/gameWords')
+                                                //                 return
+                                                //             }
+                                                //             case "Животные": {
+                                                //                 setStage('game')
+                                                //                 history.push('/gameAnimals')
+                                                //                 return
+                                                //             }
+                                                //             default: return false
+                                                //         }
+                                                //     }
+                                                // }}
+                                                // // ==== СМЕНА КЛАССА В ЗАВИСИМОСТИ ОТ СОСТОЯНИЯ КНОПКИ ==== //
+                                                // className={`${classes.menu__button} ${buttonsStage[index].touchStart ? classes.touchedButton : classes.simpleButton}`}
+                                                // ><h3>{ buttonElement.svg &&
+                                                //     <img className={classes.menu__icon} src={buttonElement.svg}/>}
+                                                //     {buttonElement.title}</h3></button>
                                                 })
                                             
                                     

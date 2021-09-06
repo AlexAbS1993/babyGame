@@ -1,16 +1,14 @@
-import { FC } from "react";
+import { FC, ReactFragment } from "react";
 
 export type ButtonTypes<T extends "menuButton"|"directionButton"> = {
-    btnObject: {
         type: T,
         subtype: T extends "directionButton" ? 'left'|'rigth' : T extends "menuButton" ? "simple" : "simple",
+        buttonChangesFunc?: () => any
         events : {
-            onTouchStartEvent?: () => void,
-            onTouchEndEvent?: () => void,
-            onClickEvent?: () => void,
-            onTouchMoveEvent?: () => void
+            onTouchStartEvent?: (e: any) => void,
+            onTouchEndEvent?: (e: any) => void,
+            onClickEvent?: (e: any) => void,
+            onTouchMoveEvent?: (e: any) => void
         }
-        text?: FC
-    }
-    
+        text?: () => ReactFragment
 }

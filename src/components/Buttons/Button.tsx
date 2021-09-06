@@ -2,31 +2,29 @@ import { FC, useEffect, useRef } from "react";
 import { ButtonTypes } from "./Button.types";
 import classes from './Button.module.css'
 
-export const Button:FC<ButtonTypes<"directionButton"|"menuButton">> = ({btnObject}) => {
-    useEffect(() => {
-
-    }, [])
+export const Button:FC<ButtonTypes<"directionButton"|"menuButton">> = ({events, type, subtype, buttonChangesFunc, text}) => {
     return (
         <>
         <button 
-        onClick={btnObject.events.onClickEvent}
-        onTouchEnd={btnObject.events.onTouchEndEvent}
-        onTouchStart={btnObject.events.onTouchStartEvent}
-        onTouchMove={btnObject.events.onTouchMoveEvent}
+        onClick={events.onClickEvent}
+        onTouchEnd={events.onTouchEndEvent}
+        onTouchStart={events.onTouchStartEvent}
+        onTouchMove={events.onTouchMoveEvent}
         className={`${classes.button} ${(() => {
-            switch(btnObject.type){
+            switch(type){
                 case "menuButton": {
                     return classes.button__menu
                 }
                 case "directionButton": {
-                    return `${classes.button__direction} ${classes[btnObject.subtype]}`
+                    return `${classes.button__direction} ${classes[subtype]}`
                 }
                 default: return false
             }
-        })()}`}
+        })()} ${buttonChangesFunc && buttonChangesFunc()}`}
         >
-
-
+            {
+                text && text()
+            }
         </button>
         </>
     )
