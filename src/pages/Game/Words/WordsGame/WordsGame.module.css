@@ -1,267 +1,273 @@
 .gameField {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: var(--game-color);
-    height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--game-color);
+  height: 100%;
 }
 
 .gameField_active {
-
 }
 
 .gameField_gone {
-    transform-origin: 0% 0%;
-    animation: gameFieldGoneAnimation 3s linear 0s forwards;
+  transform-origin: 0% 0%;
+  animation: gameFieldGoneAnimation 3s linear 0s forwards;
 }
 
 @keyframes gameFieldGoneAnimation {
-    0% {
-        transform: rotateZ(0deg) translateY(0%);
-    }
-    10% {
-        transform: rotateZ(15deg) translateY(0%);
-    }
-    50% {
-        transform: rotateZ(5deg) translateY(10%);
-    }
-    100% {
-        transform: rotateZ(5deg) translateY(100%);
-    }
+  0% {
+    transform: rotateZ(0deg) translateY(0%);
+  }
+  10% {
+    transform: rotateZ(15deg) translateY(0%);
+  }
+  50% {
+    transform: rotateZ(5deg) translateY(10%);
+  }
+  100% {
+    transform: rotateZ(5deg) translateY(100%);
+  }
 }
 
 .gameField__letter {
-    display: grid;
-    justify-content: center;
-    align-items: center;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
-
 
 .gameField__letter h1 {
-    font-size: 70vh;
-    color: rgb(36, 26, 95);
-    transform: translateY(-100%);
-    animation: letter_appearance 0.5s ease forwards;
+  font-size: 70vh;
+  color: rgb(36, 26, 95);
+  transform: translateY(-100%);
+  animation: letter_appearance 0.5s ease forwards;
 }
 
-
 @keyframes letter_appearance {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0%);
-    }
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
 }
 
 .gameField__images {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
 }
 .gameField__container {
-    height: 45vh;
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    opacity: 0;
-    animation: appearance 0.8s ease forwards;
-    position: relative;
+  height: 45vh;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  opacity: 0;
+  animation: appearance 0.8s ease forwards;
+  position: relative;
 }
 
-.innerContainer{
-    width: 80%;
-    justify-self: center;
+.innerContainer {
+  width: 80%;
+  justify-self: center;
 }
 
 .img__discription {
-    position: absolute;
-    display: grid;
-    align-items: center;
-    top: 20%;
-    left: -10%;
-    background-color: burlywood;
-    width: 200px;
-    min-height: 70px;
-    padding: 10px;
-    text-align: center;
-    border: double 3px rgb(156, 117, 66);
+  position: absolute;
+  display: grid;
+  align-items: center;
+  top: 20%;
+  left: -10%;
+  background-color: burlywood;
+  width: 200px;
+  min-height: 70px;
+  padding: 10px;
+  text-align: center;
+  border: double 3px rgb(156, 117, 66);
 }
 
 .img__discription_active {
-    opacity: 1;
-    transition: .5s ease all;
+  opacity: 1;
+  transition: 0.5s ease all;
 }
 
 .img__discription_disabled {
-    opacity: 0;
-    transition: .5s ease all;
+  opacity: 0;
+  transition: 0.5s ease all;
 }
 
 @keyframes appearance {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .gameField__container img {
-    width: clamp(60px, 80%, 150px);
-    height: clamp(60px, 80%, 150px);
-    object-fit: contain;
+  width: clamp(60px, 80%, 150px);
+  height: clamp(60px, 80%, 150px);
+  object-fit: contain;
 }
 
 .buttonNextStep {
-    position: absolute;
-    left: 90%;
-    top: 80%;
-    width: 80px;
-    height: 80px;
-    clip-path: path('M 10 20 L 10 40 L 50 40 L 50 60 L 80 30 L 80 30 L 50 00 L 50 20 L 10 20Z');
+  position: absolute;
+  left: 90%;
+  top: 80%;
+  width: 80px;
+  height: 80px;
+  clip-path: path(
+    'M 10 20 L 10 40 L 50 40 L 50 60 L 80 30 L 80 30 L 50 00 L 50 20 L 10 20Z'
+  );
 }
 
 .buttonNextStep > button {
-    width: 100%;
-    height: 100%;
-    background-color: var(--button-background-color);
+  width: 100%;
+  height: 100%;
+  background-color: var(--button-background-color);
 }
 
 .buttonNextStep_visible {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateX(0%);
-    transition: 0.4s ease all;
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0%);
+  transition: 0.4s ease all;
 }
 
 .buttonNextStep_hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(100%);
-    transition: 0.4s ease all;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition: 0.4s ease all;
 }
 
 .qiuz {
-    width: 100%;
-    height: 100%;
-    transform: translateY(-100%);
-    animation: quizAppearance 1s ease forwards;
-    background-color: var(--game-color);
-    position: relative;
-    display: grid;
-    grid-template-rows: 60% 40%;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-100%);
+  animation: quizAppearance 1s ease forwards;
+  background-color: var(--game-color);
+  position: relative;
+  display: grid;
+  grid-template-rows: 60% 40%;
 }
 
 .qiuz__letter {
-    font-size: 50vmin;
-    line-height: 1.2em;
-    text-align: center;
+  font-size: 50vmin;
+  line-height: 1.2em;
+  text-align: center;
 }
 
 @keyframes quizAppearance {
-    from{
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0%);
-    }
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
 }
 
 .quiz__greetings {
-    font-size: 16px;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    background-color: cadetblue;
-    z-index: 999;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: cadetblue;
+  z-index: 999;
 }
 
 .quiz__greetings h1 {
-    font-size: 3em;
-    color: rgb(54, 116, 158);
-    animation: h1pulse 1s linear infinite alternate;
-    text-align: center;
-    text-shadow:2px 2px 2px purple;
+  font-size: 3em;
+  color: rgb(54, 116, 158);
+  animation: h1pulse 1s linear infinite alternate;
+  text-align: center;
+  text-shadow: 2px 2px 2px purple;
 }
 
 @keyframes h1pulse {
-    from{
-        transform: scale(1);
-    }
-    to{
-        transform: scale(1.2);
-    }
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
 }
 
 .quiz__greetings_active {
-    left: 0;
-    top: 0;
+  left: 0;
+  top: 0;
 }
 .quiz__greetings_gone {
-    left: -100%;
-    top: 0;
-    transition: 0.8s linear all;
+  left: -100%;
+  top: 0;
+  transition: 0.8s linear all;
 }
 
 .quiz__variants {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    opacity: 0;
-    animation: variantsAppearance 1s ease forwards;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  opacity: 0;
+  animation: variantsAppearance 1s ease forwards;
 }
 
 @keyframes variantsAppearance {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .quiz__variants_wrong {
-    
 }
 
 .quiz__variants div img {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .quiz_wrong {
-    background-color: crimson;
-    transition: all 0.3s linear;
+  background-color: crimson;
+  transition: all 0.3s linear;
 }
 .quiz_simple {
-    background-color: rgba(220, 20, 60, 0);
-    transition: all 0.3s linear;
+  background-color: rgba(220, 20, 60, 0);
+  transition: all 0.3s linear;
 }
 
 .win {
-    width: 100%;
-    height: 100%;
-    background-color: darkviolet;
-    display: grid;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: darkviolet;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .win h1 {
-    font-size: 8em;
+  font-size: 8em;
 }
 .variant {
-    position: relative;
+  position: relative;
 }
-.quiz_cong  {
-    background-color: chartreuse;
-    transition: 0.6s ease all;
+.quiz_cong {
+  background-color: chartreuse;
+  transition: 0.6s ease all;
 }
 .quiz_nocong {
-    
+}
+.quiz__button {
+  width: 100%;
+  height: 100%;
+}
+.quiz__button img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }

@@ -1,29 +1,29 @@
 import { config } from './../../../../config/config';
-import {letters} from '../datas/words'
-import {images} from '../datas/images'
+import { letters } from '../datas/words'
+import { images } from '../datas/images'
 
-function randomIndexFunction(length: number){
+function randomIndexFunction(length: number) {
     return Math.floor(Math.random() * length)
 }
 
-export function wordChooser(steps: number, startPart: number){
+export function wordChooser(steps: number, startPart: number) {
     let result = []
     let index = 0
-    for (let i = steps*startPart; i < steps + (steps*startPart); i++){
+    for (let i = steps * startPart; i < steps + (steps * startPart); i++) {
         result[index] = {
             ...letters[i],
             words: [
                 ...(() => {
-                    let resultLetters:any[] = []
-                    let usedIndexes:any[] = []
-                    for (let j = 0; j < config.wordGame.__wordsCountPresentation; j++){
+                    let resultLetters: any[] = []
+                    let usedIndexes: any[] = []
+                    for (let j = 0; j < config.wordGame.__wordsCountPresentation; j++) {
                         let randomIndex = randomIndexFunction(images[letters[i].english].length)
-                        while (usedIndexes.indexOf(randomIndex) !== -1){
+                        while (usedIndexes.indexOf(randomIndex) !== -1) {
                             randomIndex = randomIndexFunction(images[letters[i].english].length)
                         }
                         usedIndexes.push(randomIndex)
                         resultLetters.push(images[letters[i].english][randomIndex])
-                    }                  
+                    }
                     return resultLetters
                 })()
             ]
@@ -42,34 +42,34 @@ type quizObject = {
     }[]
 }
 
-function shuffle(array:any[]) {
+function shuffle(array: any[]) {
     array.sort(() => Math.random() - 0.5);
-  }
+}
 
-export function quizCreator(wordsCollection: any):quizObject[] {
-    let quizArray:quizObject[] = []
+export function quizCreator(wordsCollection: any): quizObject[] {
+    let quizArray: quizObject[] = []
     let currentRound = 0
     let currentLetterIndex = 0
     let currentWordIndex = 0
-    while (currentRound < config.wordGame.rounds){
+    while (currentRound < config.wordGame.rounds) {
         quizArray[currentRound] = {
             letter: wordsCollection[currentLetterIndex].big,
             variants: [
             ]
         }
-        for (let i = 0; i < config.wordGame.chooseVariants; i++){
+        for (let i = 0; i < config.wordGame.chooseVariants; i++) {
             let randomOrNotCurrentWordIndex = currentLetterIndex === i ? currentWordIndex : Math.floor(Math.random() * wordsCollection[i].words.length)
-                quizArray[currentRound].variants[i] = {
-                    svg: wordsCollection[i].words[randomOrNotCurrentWordIndex].svg,
-                    title: wordsCollection[i].words[randomOrNotCurrentWordIndex].title, 
-                    right: currentLetterIndex === i ? true : false
-                } 
+            quizArray[currentRound].variants[i] = {
+                svg: wordsCollection[i].words[randomOrNotCurrentWordIndex].svg,
+                title: wordsCollection[i].words[randomOrNotCurrentWordIndex].title,
+                right: currentLetterIndex === i ? true : false
+            }
         }
         shuffle(quizArray[currentRound].variants)
         currentRound++
-        if (currentWordIndex === 0){
+        if (currentWordIndex === 0) {
             currentWordIndex++
-        }     
+        }
         else {
             currentWordIndex = 0
             currentLetterIndex++
