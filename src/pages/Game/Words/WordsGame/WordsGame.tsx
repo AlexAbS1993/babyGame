@@ -9,7 +9,7 @@ export const WordsGame = () => {
     const [words, setWords] = useState<any>([])
     const [initialize, setInitialize] = useState(false)
     useEffect(() => {
-        let startPart = Math.floor(2*Math.random())
+        let startPart = Math.floor(3*Math.random())
         setWords(wordChooser(config.wordGame.wordsPortion, startPart))
         setInitialize(true)
     }, [])

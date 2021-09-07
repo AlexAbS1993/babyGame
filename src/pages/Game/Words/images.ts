@@ -10,6 +10,12 @@ import enot from './svg/enot.svg'
 import evang from './svg/evang.svg'
 import house from './svg/house.svg'
 import derevo from './svg/derevo.svg'
+import christmas from './svg/christmas.svg'
+import hedgehog from './svg/hedgehog.svg'
+import zebra from './svg/zebra.svg'
+import umbrella from './svg/umbrella.svg'
+import grasshopper from './svg/grasshopper.svg'
+import giraffe from './svg/giraffe.svg'
 
 type imagesList = {
     [key: string]: {
@@ -88,5 +94,38 @@ export const images: imagesList = {
             cathegory: "home",
             discription:"Евангелие от Иоанна",
             svg: evang}  
-            ]
+            ],
+            'Yo': [
+                {
+                    title: "Ёлка",
+                    cathegory: "nature",
+                    discription:"Красивая, нарядная, на праздник к нам пришла",
+                    svg: christmas}, {
+                    title: "Ёж",
+                    cathegory: 'animals',
+                    discription:"У ежа, как и у ёлки, есть колючие иголки",
+                    svg: hedgehog}  
+            ],
+            "Zh": [
+                {
+                    title: "Жук",
+                    cathegory: "animals",
+                    discription:"Жук жужжит",
+                    svg: grasshopper}, {
+                    title: "Жираф",
+                    cathegory: 'animals',
+                    discription:"Самое длинношеее животное",
+                    svg: giraffe}  
+                    ],
+            "Z": [
+                {
+                    title: "Зонт",
+                    cathegory: 'home',
+                    discription:"Укроемся под зонтиком от дождя",
+                    svg: umbrella}, {
+                    title: "Зебра",
+                    cathegory: "animals",
+                    discription:"Как лошадка, но только с полосками",
+                    svg: zebra}  
+                    ]
 }

@@ -1,5 +1,5 @@
 .button {
-   
+   box-sizing: border-box;
 }
 .button__menu {
     background-color: var(--button-background-color);
@@ -37,4 +37,20 @@
     transition: 0.3s all ease;
     transform: translate(0px, 0px);
     background-color: var(--button-background-color);
+}
+
+.button__direction{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 50px;
+    height: 50px;
+    clip-path: path('M50 20 L50 30 L35 30 L35 50 L0 25 L35 0 L35 20 Z');
+    background-color: chartreuse;
+    border: none;
+    outline: none;
+}
+
+.left {
+    
 }

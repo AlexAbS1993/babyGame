@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Route } from 'react-router';
+import StageContext from '../context';
 import classes from './App.module.css';
 import { stageAppType } from './App.types';
 import { Author } from './Author/Author';
@@ -14,8 +15,9 @@ const hierarchy = [
 
 function App() {
   const [stage, setStage] = useState<stageAppType>('menu')
+  
   return (
-    <>
+    <StageContext.Provider value={{stage, setStage}}>
       <Response />
       <div className={classes.appContainer}>
           {
@@ -39,7 +41,7 @@ function App() {
             })()
           }
       </div>
-    </>
+      </StageContext.Provider>
   );
 }
 

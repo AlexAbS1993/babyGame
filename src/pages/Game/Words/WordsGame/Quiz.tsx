@@ -1,6 +1,8 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useCallback, useContext, useEffect, useState } from 'react'
 import { quizCreator } from './functions'
 import classes from './WordsGame.module.css'
+import StageContext from '../../../../context'
+import { useHistory } from 'react-router'
 
 export const Quiz:FC<{words: any}> = ({words}) => {
     const [isGreetings, setGreetings] = useState(true)
@@ -8,6 +10,8 @@ export const Quiz:FC<{words: any}> = ({words}) => {
     const [initialize, setInitialize] = useState(false)
     const [currentRound, setCurrentRound] = useState(0)
     const [isWin, setWin] = useState(false)
+    const {stage, setStage} = useContext(StageContext)
+    const history = useHistory()
     useEffect(() => {
         setQuizQuestions(quizCreator(words))
         setInitialize(true)
@@ -20,15 +24,13 @@ export const Quiz:FC<{words: any}> = ({words}) => {
     return (
         <>
         {
-            isWin && <div className={classes.win}>
-                {
-                  new Array(12).fill([]).map((e, i) => {
-                      return <h2
-                      className={classes.ura}
-                      key={i}
-                      >УРА</h2>
-                  })
-                }
+            isWin && <div className={classes.win} 
+            onClick={() => {
+                setStage("menu")
+                history.push('/')
+            }}
+            >
+                <h1>УРА!!!</h1>
             </div>
         }
     {
@@ -48,7 +50,7 @@ export const Quiz:FC<{words: any}> = ({words}) => {
         <div className={classes.quiz__variants}>
             {
                 quizQuestions[currentRound].variants.map((variant: any, index: number) => {
-                    return <div key={`${variant.title}${index}`} ><VariantContainer variant={variant} setCurrentRound={setCurrentRound}/> </div>
+                    return <div key={`${variant.title}${index}`} className={classes.variant}><VariantContainer variant={variant} setCurrentRound={setCurrentRound}/> </div>
                 })
             }
         </div>
@@ -63,21 +65,36 @@ const VariantContainer:FC<{
     variant: any, setCurrentRound: any
 }> = ({variant, setCurrentRound}) => {
     const [wrong, setWrong] = useState(false)
+    const [congratulation, setCongratulation] = useState(false)
+    let timeout: NodeJS.Timeout
+    let anothertimeout: NodeJS.Timeout
+    useEffect(() => {
+        return () => {
+            clearTimeout() 
+        }
+    }, [])
     return (
         <> <img src={variant.svg} alt={variant.title}  onClick={(e) => {
                         if (variant.right){
-                            setCurrentRound((prev: any) => {
-                                let newStep = prev + 1
-                                return newStep
-                            })
+                            setCongratulation(true)
+                            setTimeout(() => {
+                                setCongratulation(false)
+                            }, 1000)
+                            setTimeout(() => {
+                                setCurrentRound((prev: any) => {
+                                    let newStep = prev + 1
+                                    return newStep
+                                })
+                            }, 1500)
                         }
                         else {
                             setWrong(true)
                             setTimeout(() => {
-                                setWrong(false) 
+                                setWrong(false)
                             }, 1000)
                         }
                     }}
-                    className={`${wrong ? classes.quiz_wrong : classes.quiz_simple}`}/> </>
+                    className={`${wrong ? classes.quiz_wrong : classes.quiz_simple} ${congratulation ? classes.quiz_cong : classes.quiz_simple}`} /> 
+                    </>
     )
 }

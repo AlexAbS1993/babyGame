@@ -28,5 +28,20 @@ export const letters = [
         big: "Е",
         little: "е",
         english: "E"
+    },
+    {
+        big: "Ё",
+        little: 'ё',
+        english: "Yo"
+    },
+    {
+        big: "Ж",
+        little: "ж",
+        english: "Zh"
+    },
+    {
+        big: "З",
+        little: "з",
+        english: "Z"
     }
 ]

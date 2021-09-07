@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import classes from './WordsGame.module.css'
 
 export const Presentation:FC<{
@@ -8,6 +8,11 @@ export const Presentation:FC<{
     const [step, setStep] = useState(0)
     const [startPos, setStartPos] = useState(0)
     const [gameStageEnd, setGameStageEnd] = useState(false)
+    useEffect(() => {
+        return () => {
+            clearTimeout()
+        }
+    }, [])
     return (
         <>
             <div className={`${classes.gameField} ${gameStageEnd ? classes.gameField_gone : classes.gameField_active}`} 
@@ -46,9 +51,30 @@ export const Presentation:FC<{
                 }
             </section>
             <div className={`${classes.buttonNextStep} ${step === 2 ? classes.buttonNextStep_visible : classes.buttonNextStep_hidden}`}>
-                <button
+                <ButtonNextStepWrapper 
+                setGameStageEnd={setGameStageEnd}
+                setStage={setStage}
+                />
+            </div>
+        </div>
+        </>
+    )
+}
+
+type ButtonNextStepWrapperType = {
+    setGameStageEnd: any,
+    setStage: any
+}
+
+const ButtonNextStepWrapper:FC<ButtonNextStepWrapperType> = ({setGameStageEnd, setStage}) => {
+    useEffect(() => {
+        return () => {
+            clearTimeout()
+        }
+    }, [])
+    return (
+        <button
                 onClick={(e) => {
-                    console.log('next step')
                     setGameStageEnd(true)
                     setTimeout(() => {
                         setStage("quiz")
@@ -56,12 +82,8 @@ export const Presentation:FC<{
                     }, 3000)
                 }}
                 ></button>
-            </div>
-        </div>
-        </>
     )
 }
-
 
 const ImageAndDiscription = ({word}: any) => {
     const [isActive, setActive]= useState(false)

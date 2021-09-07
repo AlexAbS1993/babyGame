@@ -10,5 +10,6 @@ export type ButtonTypes<T extends "menuButton"|"directionButton"> = {
             onClickEvent?: (e: any) => void,
             onTouchMoveEvent?: (e: any) => void
         }
-        text?: () => ReactFragment
+        text?: () => ReactFragment,
+        disabled?: boolean
 }

@@ -1,11 +1,12 @@
-import { FC, useEffect, useRef } from "react";
+import { FC } from "react";
 import { ButtonTypes } from "./Button.types";
 import classes from './Button.module.css'
 
-export const Button:FC<ButtonTypes<"directionButton"|"menuButton">> = ({events, type, subtype, buttonChangesFunc, text}) => {
+export const Button:FC<ButtonTypes<"directionButton"|"menuButton">> = ({events, type, subtype, buttonChangesFunc, text, disabled}) => {
     return (
         <>
         <button 
+        disabled={disabled}
         onClick={events.onClickEvent}
         onTouchEnd={events.onTouchEndEvent}
         onTouchStart={events.onTouchStartEvent}
