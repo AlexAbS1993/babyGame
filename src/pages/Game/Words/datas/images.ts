@@ -1,26 +1,28 @@
-import alpaca from './svg/alpaca.svg'
-import arbuz from './svg/arbuz.svg'
-import bananas from './svg/bananas.svg'
-import squirrel from './svg/squirrel.svg'
-import vishnya from './svg/vishnya.svg'
-import vilka from './svg/vilka.svg'
-import gnezdo from './svg/gnezdo.svg'
-import golub from './svg/golub.svg'
-import enot from './svg/enot.svg'
-import evang from './svg/evang.svg'
-import house from './svg/house.svg'
-import derevo from './svg/derevo.svg'
-import christmas from './svg/christmas.svg'
-import hedgehog from './svg/hedgehog.svg'
-import zebra from './svg/zebra.svg'
-import umbrella from './svg/umbrella.svg'
-import grasshopper from './svg/grasshopper.svg'
-import giraffe from './svg/giraffe.svg'
+import alpaca from '../svg/alpaca.svg'
+import arbuz from '../svg/arbuz.svg'
+import bananas from '../svg/bananas.svg'
+import squirrel from '../svg/squirrel.svg'
+import vishnya from '../svg/vishnya.svg'
+import vilka from '../svg/vilka.svg'
+import gnezdo from '../svg/gnezdo.svg'
+import golub from '../svg/golub.svg'
+import enot from '../svg/enot.svg'
+import evang from '../svg/evang.svg'
+import house from '../svg/house.svg'
+import derevo from '../svg/derevo.svg'
+import christmas from '../svg/christmas.svg'
+import hedgehog from '../svg/hedgehog.svg'
+import zebra from '../svg/zebra.svg'
+import umbrella from '../svg/umbrella.svg'
+import grasshopper from '../svg/grasshopper.svg'
+import giraffe from '../svg/giraffe.svg'
+import bus from '../svg/bus.svg'
+import pineapple from '../svg/pineapple.svg'
 
 type imagesList = {
     [key: string]: {
         title: string,
-        cathegory: "animals"|"fruit"|"backaly"|"berry"|'kitchen'|"home"|"nature",
+        cathegory: "animals"|"fruit"|"backaly"|"berry"|'kitchen'|"home"|"nature"|"auto",
         svg: any,
         discription: string
     }[]
@@ -38,7 +40,19 @@ export const images: imagesList = {
             title: "Арбуз",
             discription:"Сладкий, вкусный, спелый арбуз",
             cathegory: 'backaly',
-            svg: arbuz}    
+            svg: arbuz},
+            {
+                title: "Автобус",
+                discription:"Поехали кататься, Валентин!",
+                cathegory: 'auto',
+                svg: bus
+            },
+            {
+                title: "Ананас",
+                discription:"Большой и сладкий ананас",
+                cathegory: 'fruit',
+                svg: pineapple
+            }    
     ],
     "Be": [
         {

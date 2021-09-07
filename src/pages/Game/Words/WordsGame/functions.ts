@@ -1,6 +1,10 @@
-import { config } from '../../../../config/config';
-import {letters} from '../words'
-import {images} from '../images'
+import { config } from './../../../../config/config';
+import {letters} from '../datas/words'
+import {images} from '../datas/images'
+
+function randomIndexFunction(length: number){
+    return Math.floor(Math.random() * length)
+}
 
 export function wordChooser(steps: number, startPart: number){
     let result = []
@@ -9,7 +13,19 @@ export function wordChooser(steps: number, startPart: number){
         result[index] = {
             ...letters[i],
             words: [
-                ...images[letters[i].english]
+                ...(() => {
+                    let resultLetters:any[] = []
+                    let usedIndexes:any[] = []
+                    for (let j = 0; j < config.wordGame.__wordsCountPresentation; j++){
+                        let randomIndex = randomIndexFunction(images[letters[i].english].length)
+                        while (usedIndexes.indexOf(randomIndex) !== -1){
+                            randomIndex = randomIndexFunction(images[letters[i].english].length)
+                        }
+                        usedIndexes.push(randomIndex)
+                        resultLetters.push(images[letters[i].english][randomIndex])
+                    }                  
+                    return resultLetters
+                })()
             ]
         }
         index++

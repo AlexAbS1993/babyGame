@@ -1,4 +1,4 @@
-import { FC, useCallback, useContext, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import { quizCreator } from './functions'
 import classes from './WordsGame.module.css'
 import StageContext from '../../../../context'
@@ -94,7 +94,7 @@ const VariantContainer:FC<{
                             }, 1000)
                         }
                     }}
-                    className={`${wrong ? classes.quiz_wrong : classes.quiz_simple} ${congratulation ? classes.quiz_cong : classes.quiz_simple}`} /> 
+                    className={`${wrong ? classes.quiz_wrong : classes.quiz_simple} ${congratulation ? classes.quiz_cong : classes.quiz_nocong}`} /> 
                     </>
     )
 }
