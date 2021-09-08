@@ -43,5 +43,50 @@ export const letters = [
         big: "З",
         little: "з",
         english: "Z"
+    },
+    {
+        big: "И",
+        little: 'и',
+        english: "I"
+    },
+    {
+        big: "Й",
+        little: 'й',
+        english: "Y"
+    },
+    {
+        big: "К",
+        little: "к",
+        english: "K"
+    },
+    {
+        big: "Л",
+        little: "л",
+        english: "L"
+    },
+    {
+        big: "М",
+        little: "м",
+        english: "M"
+    },
+    {
+        big: "Н",
+        little: "н",
+        english: "N"
+    },
+    {
+        big: "О",
+        little: "о",
+        english: "O"
+    },
+    {
+        big: "П",
+        little: "п",
+        english: "P"
+    },
+    {
+        big: "Р",
+        little: "р",
+        english: "R"
     }
 ]

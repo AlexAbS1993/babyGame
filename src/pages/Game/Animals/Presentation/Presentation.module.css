@@ -1,0 +1,28 @@
+.animalGame {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--repeat-rows), 1fr);
+  grid-template-rows: 50vh 50vh;
+}
+
+.animalGame__imageContainer {
+  background: none;
+  outline: none;
+}
+.animalGame__imageContainer img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.selectImg_unchecked {
+  filter: brightness(10%);
+  opacity: 0.2;
+  transition: all 0.4s ease;
+}
+.selectImg_checked {
+  filter: brightness(100%);
+  opacity: 1;
+  transition: all 0.4s ease;
+}

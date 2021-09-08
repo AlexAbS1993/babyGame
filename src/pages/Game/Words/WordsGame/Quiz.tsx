@@ -3,7 +3,7 @@ import {quizCreator} from './functions'
 import classes from './WordsGame.module.css'
 import StageContext from '../../../../context'
 import {useHistory} from 'react-router'
-const ura = require('../../../../assets/sounds/ura.mp3')
+import {music} from '../../../../music/music'
 
 export const Quiz: FC<{words: any}> = ({words}) => {
   // Приветственный фон
@@ -26,7 +26,7 @@ export const Quiz: FC<{words: any}> = ({words}) => {
   useEffect(() => {
     if (initialize && currentRound === quizQuestions.length) {
       setWin(true)
-      new Audio(ura.default).play()
+      music.quizWin()
     }
   }, [currentRound])
   return (
@@ -87,9 +87,6 @@ export const Quiz: FC<{words: any}> = ({words}) => {
   )
 }
 
-const wrongSound = require('../../../../assets/sounds/wrong.mp3')
-const rightSound = require('../../../../assets/sounds/right.mp3')
-
 const VariantContainer: FC<{
   variant: any
   setCurrentRound: any
@@ -111,9 +108,7 @@ const VariantContainer: FC<{
         } ${congratulation ? classes.quiz_cong : classes.quiz_nocong}`}
         onClick={(e) => {
           if (variant.right) {
-            let audio = new Audio(rightSound.default)
-            audio.volume = 0.2
-            audio.play()
+            music.rightAnswer()
             setCongratulation(true)
             setDoneChoose(true)
             setTimeout(() => {
@@ -127,7 +122,7 @@ const VariantContainer: FC<{
               })
             }, 1500)
           } else {
-            new Audio(wrongSound.default).play()
+            music.wrongAnswer()
             setWrong(true)
             setTimeout(() => {
               setWrong(false)

@@ -5,7 +5,7 @@ import {ButtonWrapperType} from './ButtonWrapper.types'
 import classes from '../Menu.module.css'
 import styles from '../../../components/Buttons/Button.module.css'
 import {Routes} from '../../../routes/Router'
-const buttonClick = require('../../../assets/sounds/buttonClick.mp3')
+import {music} from '../../../music/music'
 
 export const MenuButtonWrapper: FC<ButtonWrapperType> = ({
   buttonsStage,
@@ -39,7 +39,7 @@ export const MenuButtonWrapper: FC<ButtonWrapperType> = ({
       }}
       events={{
         onClickEvent: (e) => {
-          new Audio(buttonClick.default).play()
+          music.buttonClick()
           if (buttonElement.option === 'submenu') {
             setSubMenu(buttonElement.title)
           } else if (buttonElement.option === 'page') {
@@ -59,7 +59,7 @@ export const MenuButtonWrapper: FC<ButtonWrapperType> = ({
               }
               case 'Животные': {
                 setStage('game')
-                history.push('/gameAnimals')
+                history.push(Routes.animalGame)
                 return
               }
               default:

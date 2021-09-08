@@ -1,4 +1,5 @@
 import {Author} from '../pages/Author/Author'
+import {AnimalGame} from '../pages/Game/Animals/AnimalGame'
 import {WordsGame} from '../pages/Game/Words/WordsGame/WordsGame'
 import {Menu} from '../pages/Menu/Menu'
 import {Test} from '../pages/Test/Test'
@@ -14,6 +15,7 @@ export enum Routes {
   start = '/',
   author = '/author',
   test = '/test_dev',
+  animalGame = '/gameAnimal',
 }
 
 export const GameRoutes: RouteType[] = [
@@ -21,6 +23,11 @@ export const GameRoutes: RouteType[] = [
     path: Routes.wordGame,
     exact: true,
     component: WordsGame,
+  },
+  {
+    component: AnimalGame,
+    path: Routes.animalGame,
+    exact: true,
   },
 ]
 

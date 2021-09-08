@@ -42,7 +42,7 @@ type quizObject = {
     }[]
 }
 
-function shuffle(array: any[]) {
+export function shuffle(array: any[]) {
     array.sort(() => Math.random() - 0.5);
 }
 
