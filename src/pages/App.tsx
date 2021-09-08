@@ -26,6 +26,7 @@ function App() {
                           path={route.path}
                           exact={route.exact}
                           component={route.component}
+                          key={route.path}
                         />
                       )
                     })}
@@ -43,6 +44,7 @@ function App() {
                           path={route.path}
                           exact={route.exact}
                           component={route.component}
+                          key={route.path}
                         />
                       )
                     })}

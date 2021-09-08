@@ -1,4 +1,7 @@
 export const config = {
+    general: {
+        devMode: true
+    },
     // ==== КОНСТАНТЫ ДЛЯ ИГРЫ В БУКВЫ ==== //
     wordGame: {
         rounds: 6,
