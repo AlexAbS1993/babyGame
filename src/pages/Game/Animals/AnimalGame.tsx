@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import {animalChooser, animalPicker} from './functions/chooser'
 import {PresentationAnimalGame} from './Presentation/Presentation'
 import {animalListType} from './Presentation/Presentation.types'
+import {QuizAnimalGame} from './Quiz/QuizAnimalGame'
 
 export const AnimalGame = () => {
   const [isInitialize, setInitialize] = useState(false)
@@ -23,7 +24,7 @@ export const AnimalGame = () => {
             )
           }
           case 'quiz': {
-            return <> </>
+            return <QuizAnimalGame animalList={getAnimalList} />
           }
           default:
             ;<> </>

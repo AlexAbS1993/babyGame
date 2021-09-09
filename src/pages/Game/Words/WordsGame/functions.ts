@@ -44,6 +44,7 @@ type quizObject = {
 
 export function shuffle(array: any[]) {
     array.sort(() => Math.random() - 0.5);
+    return array
 }
 
 export function quizCreator(wordsCollection: any): quizObject[] {

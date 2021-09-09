@@ -5,7 +5,8 @@ export const config = {
     // ==== КОНСТАНТЫ ДЛЯ ИГРЫ В ЖИВОТНЫХ ==== //
     animalGame: {
         countOfAnimals: 6,
-        __rows: 2
+        __rows: 2,
+        rounds: 2
     },
     // ==== КОНСТАНТЫ ДЛЯ ИГРЫ В БУКВЫ ==== //
     wordGame: {

@@ -6,7 +6,7 @@ export type animalListType = {
 }
 
 export type PresentationComponentType = {
-    setStage: any,
+    setStage: (arg: "quiz" | "presentation") => void,
     animalList: animalListType[]
 }
 

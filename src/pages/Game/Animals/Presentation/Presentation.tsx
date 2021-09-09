@@ -7,7 +7,18 @@ export const PresentationAnimalGame: FC<PresentationComponentType> = ({
   animalList,
 }) => {
   const [getHowChecked, setChecked] = useState(0)
-  console.log(getHowChecked)
+  useEffect(() => {
+    return () => {
+      clearTimeout()
+    }
+  }, [])
+  useEffect(() => {
+    if (getHowChecked === config.animalGame.countOfAnimals) {
+      setTimeout(() => {
+        setStage('quiz')
+      }, 900)
+    }
+  }, [getHowChecked])
   const [isDisabledAllButtons, setDisabledAllButtons] = useState(false)
   useEffect(() => {}, [getHowChecked])
   var style = useMemo(() => {
@@ -54,6 +65,9 @@ const ImagePick: FC<ImagePickType> = ({
     setChecked((prev: any) => {
       return stepDone ? (isChecked ? prev + 1 : prev - 1) : 0
     })
+    return () => {
+      clearTimeout()
+    }
   }, [isChecked])
   return (
     <button
