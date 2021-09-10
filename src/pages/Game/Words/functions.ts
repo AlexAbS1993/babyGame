@@ -1,4 +1,4 @@
-import { config } from './../../../../config/config';
+import { config } from '../../../config/config';
 import { letters } from '../datas/words'
 import { images } from '../datas/images'
 

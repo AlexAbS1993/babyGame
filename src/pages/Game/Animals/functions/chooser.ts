@@ -1,7 +1,7 @@
 import { config } from './../../../../config/config';
-import { letters } from "../../Words/datas/words"
-import { images } from "../../Words/datas/images"
-import { shuffle } from "../../Words/WordsGame/functions"
+import { letters } from "../../datas/words"
+import { images } from "../../datas/images"
+import { shuffle } from "../../Words/functions"
 
 export const animalChooser = () => {
     let animalList: any = []

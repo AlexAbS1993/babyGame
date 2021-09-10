@@ -1,6 +1,6 @@
 import {Author} from '../pages/Author/Author'
 import {AnimalGame} from '../pages/Game/Animals/AnimalGame'
-import {WordsGame} from '../pages/Game/Words/WordsGame/WordsGame'
+import {WordsGame} from '../pages/Game/Words/WordsGame'
 import {Menu} from '../pages/Menu/Menu'
 import {Test} from '../pages/Test/Test'
 

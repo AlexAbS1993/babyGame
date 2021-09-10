@@ -1,9 +1,9 @@
 import {FC, useContext, useEffect, useState} from 'react'
 import {quizCreator} from './functions'
 import classes from './WordsGame.module.css'
-import StageContext from '../../../../context'
+import StageContext from '../../../context'
 import {useHistory} from 'react-router'
-import {music} from '../../../../music/music'
+import {music} from '../../../music/music'
 
 export const Quiz: FC<{words: any}> = ({words}) => {
   // Приветственный фон

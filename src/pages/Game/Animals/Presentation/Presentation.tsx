@@ -18,6 +18,9 @@ export const PresentationAnimalGame: FC<PresentationComponentType> = ({
         setStage('quiz')
       }, 900)
     }
+    return () => {
+      clearTimeout()
+    }
   }, [getHowChecked])
   const [isDisabledAllButtons, setDisabledAllButtons] = useState(false)
   useEffect(() => {}, [getHowChecked])
@@ -59,7 +62,7 @@ const ImagePick: FC<ImagePickType> = ({
           setDisabledAllButtons(true)
           setTimeout(() => {
             setDisabledAllButtons(false)
-          }, 1000)
+          }, 500)
         })()
       : setDisabledAllButtons(false)
     setChecked((prev: any) => {

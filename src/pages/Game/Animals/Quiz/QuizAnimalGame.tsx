@@ -1,7 +1,7 @@
 import React from 'react'
 import {FC, LegacyRef, useEffect, useRef, useState} from 'react'
 import {config} from '../../../../config/config'
-import {shuffle} from '../../Words/WordsGame/functions'
+import {shuffle} from '../../Words/functions'
 import {winCondition} from '../functions/dragAndDropGoalCondition'
 import {animalListType} from '../Presentation/Presentation.types'
 import {QuizAnimalGameTypes} from './Quiz.types'
@@ -185,6 +185,7 @@ const DraggableContainer: FC<draggableContainerType> = React.memo(
         let height = datas.height
         let width = datas.width
         const touchMove = (event: TouchEvent) => {
+          event.preventDefault()
           ref.current!.style.top =
             event.targetTouches[0].clientY - height / 2 + 'px'
           ref.current!.style.left =
@@ -195,7 +196,7 @@ const DraggableContainer: FC<draggableContainerType> = React.memo(
           height: height,
         })
         const touchEnd = (event: TouchEvent) => {
-          console.log(goalCoords)
+          event.preventDefault()
           if (
             winCondition(
               {
