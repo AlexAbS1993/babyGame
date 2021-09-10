@@ -2,6 +2,7 @@ import {FC} from 'react'
 import {useHistory} from 'react-router'
 import {Button} from '../../../components/Buttons/Button'
 import {config} from '../../../config/config'
+import {music} from '../../../music/music'
 import {Routes} from '../../../routes/Router'
 import {currentMenuStage, MenuWrapperTypes} from './MenuWrapper.types'
 const hierarchy = [
@@ -53,6 +54,7 @@ const MenuButtonWrapper: FC<MenuButtonWrapper> = ({
         disabled={currentMenuStage === 'root' ? true : false}
         events={{
           onClickEvent: () => {
+            music.buttonArray()
             let indexOfStage: number = 0
             for (let i = 0; i < hierarchy.length; i++) {
               if (hierarchy[i].node === currentMenuStage) {

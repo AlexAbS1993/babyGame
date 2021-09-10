@@ -88,5 +88,20 @@ export const letters = [
         big: "Р",
         little: "р",
         english: "R"
-    }
+    },
+    {
+        big: "С",
+        little: "с",
+        english: "S"
+    },
+    {
+        big: "Т",
+        little: "т",
+        english: "T"
+    },
+    {
+        big: "У",
+        little: "у",
+        english: "U"
+    },
 ]

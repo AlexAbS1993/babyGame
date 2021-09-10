@@ -36,6 +36,15 @@ import sheep from '../svg/sheep.svg'
 import cookie from '../svg/cookie.svg'
 import romashka from '../svg/romashka.svg'
 import roller from '../svg/roller.svg'
+import snail from '../svg/snail.svg'
+import duck from '../svg/duck.svg'
+import tiger from '../svg/tiger.svg'
+import cloud from '../svg/cloud.svg'
+import cake from '../svg/cake.svg'
+import tractor from '../svg/tractor.svg'
+import sunny from '../svg/sunny.svg'
+import dog from '../svg/dog.svg'
+
 
 type imagesList = {
     [key: string]: {
@@ -293,6 +302,55 @@ export const images: imagesList = {
             cathegory: "home",
             discription: "Мама любит на них кататься",
             svg: roller
+        }
+    ],
+    "S": [
+        {
+            title: "Солнце",
+            cathegory: 'nature',
+            discription: "Яркое и тёплое",
+            svg: sunny
+        }, {
+            title: "Собака",
+            cathegory: "animals",
+            discription: "Лучший друг человека",
+            svg: dog
+        }
+    ],
+    "T": [
+        {
+            title: "Туча",
+            cathegory: "nature",
+            discription: "Если видишь тучу, значит скоро будет дождик",
+            svg: cloud
+        }, {
+            title: "Трактор",
+            cathegory: 'auto',
+            discription: "Дыр Дыр едет трактор!",
+            svg: tractor
+        }, {
+            title: "Торт",
+            cathegory: 'kitchen',
+            discription: "Ням ням!",
+            svg: cake
+        }, {
+            title: "Тигр",
+            cathegory: 'animals',
+            discription: "Полосатый волосатый!",
+            svg: tiger
+        }
+    ],
+    "U": [
+        {
+            title: "Улитка",
+            cathegory: 'animals',
+            discription: "Живёт в своем домике",
+            svg: snail
+        }, {
+            title: "Утка",
+            cathegory: "animals",
+            discription: "Тятяка",
+            svg: duck
         }
     ]
 }

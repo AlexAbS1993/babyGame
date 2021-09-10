@@ -3,12 +3,14 @@ const ura = require('../assets/sounds/ura.mp3')
 const wrongSound = require('../assets/sounds/wrong.mp3')
 const rightSound = require('../assets/sounds/right.mp3')
 const buttonClick = require('../assets/sounds/buttonClick.mp3')
+const arrowButton = require('../assets/sounds/arrowButton.mp3')
 
 enum Music {
     ButtonClick = "buttonClick",
     QuizWin = "quizWin",
     WrongAnswer = "wrongAnswer",
-    RightAnswer = "rightAnswer"
+    RightAnswer = "rightAnswer",
+    ButtonArray = 'buttonArray'
 }
 
 class AppAudio {
@@ -36,5 +38,8 @@ export const music = {
     },
     [Music.RightAnswer]: () => {
         new AppAudio(rightSound.default).setVolume().play()
+    },
+    [Music.ButtonArray]: () => {
+        new AppAudio(arrowButton.default).setVolume().play()
     }
 }
