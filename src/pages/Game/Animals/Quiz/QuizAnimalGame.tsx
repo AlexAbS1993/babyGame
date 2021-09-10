@@ -1,6 +1,8 @@
+import React from 'react'
 import {FC, LegacyRef, useEffect, useRef, useState} from 'react'
 import {config} from '../../../../config/config'
 import {shuffle} from '../../Words/WordsGame/functions'
+import {winCondition} from '../functions/dragAndDropGoalCondition'
 import {animalListType} from '../Presentation/Presentation.types'
 import {QuizAnimalGameTypes} from './Quiz.types'
 import classes from './QuizAnimal.module.css'
@@ -12,7 +14,32 @@ export const QuizAnimalGame: FC<QuizAnimalGameTypes> = ({animalList}) => {
     any[]
   >([])
   const [goalCoords, setGoalCoords] = useState<any>({})
-  console.log(goalCoords)
+  const [dropZoneReady, setDropReady] = useState(false)
+  const [dropZoneCountReady, setCountDropZone] = useState<number>(0)
+  const [getGoalsReached, setGoalsReached] = useState(0)
+  useEffect(() => {
+    if (
+      dropZoneCountReady ===
+      config.animalGame.countOfAnimals / config.animalGame.rounds
+    ) {
+      setDropReady(true)
+    }
+  }, [goalCoords])
+  useEffect(() => {
+    if (
+      getGoalsReached ===
+      config.animalGame.countOfAnimals / config.animalGame.rounds
+    ) {
+      if (getCurrentStep === config.animalGame.rounds - 1) {
+        console.log('ПОБЕДА')
+      } else {
+        setGoalsReached(0)
+        setCountDropZone(0)
+        setDropReady(false)
+        setCurrentStep((prev: any) => prev + 1)
+      }
+    }
+  }, [getGoalsReached])
   useEffect(() => {
     let separatedAnimalList = []
     let index = -1
@@ -59,26 +86,30 @@ export const QuizAnimalGame: FC<QuizAnimalGameTypes> = ({animalList}) => {
                   <DropZone
                     element={element}
                     setGoalCoords={setGoalCoords}
+                    setCountDropZone={setCountDropZone}
                     key={`${element.title}${element.cathegory}`}
                   />
                 )
               }
             )}
           </section>
-          <section className={classes.touchGamingScreen__known}>
-            {getAnimalSortedSeparatedList[getCurrentStep].known.map(
-              (element: animalListType, index: number) => {
-                return (
-                  <DraggableContainer
-                    goalCoords={goalCoords}
-                    element={element}
-                    index={index}
-                    key={element.title}
-                  />
-                )
-              }
-            )}
-          </section>
+          {dropZoneReady && (
+            <section className={classes.touchGamingScreen__known}>
+              {getAnimalSortedSeparatedList[getCurrentStep].known.map(
+                (element: animalListType, index: number) => {
+                  return (
+                    <DraggableContainer
+                      goalCoords={goalCoords}
+                      element={element}
+                      index={index}
+                      setGoalsReached={setGoalsReached}
+                      key={element.title}
+                    />
+                  )
+                }
+              )}
+            </section>
+          )}
         </section>
       )}
     </>
@@ -88,8 +119,13 @@ export const QuizAnimalGame: FC<QuizAnimalGameTypes> = ({animalList}) => {
 type DropZoneTypes = {
   element: animalListType
   setGoalCoords: any
+  setCountDropZone: any
 }
-const DropZone: FC<DropZoneTypes> = ({element, setGoalCoords}) => {
+const DropZone: FC<DropZoneTypes> = ({
+  element,
+  setGoalCoords,
+  setCountDropZone,
+}) => {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     let coords = ref.current?.getBoundingClientRect()
@@ -103,6 +139,10 @@ const DropZone: FC<DropZoneTypes> = ({element, setGoalCoords}) => {
           bottom: coords?.bottom,
         },
       }
+    })
+    setCountDropZone((prev: any) => {
+      let newCount = prev + 1
+      return newCount
     })
   }, [])
   return (
@@ -127,46 +167,76 @@ type draggableContainerType = {
       right: number
     }
   }
+  setGoalsReached: any
 }
 
-const DraggableContainer: FC<draggableContainerType> = ({
-  element,
-  index,
-  goalCoords,
-}) => {
-  const [isTouchStart, setIsTouchStart] = useState(false)
-  const [coords, setCoords] = useState()
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (ref) {
-      let datas = ref.current!.getBoundingClientRect()
-      let left = datas.left
-      let top = datas.top
-      let height = datas.height
-      let width = datas.width
-      ref.current!.addEventListener('touchstart', function () {
-        this.addEventListener('touchmove', (event) => {
-          this.style.top = event.targetTouches[0].clientY - height / 2 + 'px'
-          this.style.left = event.targetTouches[0].clientX - width / 2 + 'px'
+const DraggableContainer: FC<draggableContainerType> = React.memo(
+  ({element, index, goalCoords, setGoalsReached}) => {
+    const [sizes, setSizes] = useState({
+      width: 0,
+      height: 0,
+    })
+    const ref = useRef<HTMLDivElement>(null)
+    useEffect(() => {
+      if (ref) {
+        let datas = ref.current!.getBoundingClientRect()
+        let left = datas.left
+        let top = datas.top
+        let height = datas.height
+        let width = datas.width
+        const touchMove = (event: TouchEvent) => {
+          ref.current!.style.top =
+            event.targetTouches[0].clientY - height / 2 + 'px'
+          ref.current!.style.left =
+            event.targetTouches[0].clientX - width / 2 + 'px'
+        }
+        setSizes({
+          width: width,
+          height: height,
         })
-        this.addEventListener('touchend', function (event) {
-          this.style.top = top + 'px'
-          this.style.left = left + 'px'
-          console.log(event.changedTouches[0])
-        })
-      })
-    }
-  }, [])
-  return (
-    <>
-      <div
-        ref={ref}
-        className={classes.container__imageContainer}
-        key={element.title}
-        id={`${index}`}
-      >
-        <img src={element.svg} className={classes.container__img_known} />
-      </div>
-    </>
-  )
-}
+        const touchEnd = (event: TouchEvent) => {
+          console.log(goalCoords)
+          if (
+            winCondition(
+              {
+                left: event.changedTouches[0].clientX,
+                top: event.changedTouches[0].clientY,
+                height: sizes.height,
+                width: sizes.width,
+              },
+              {
+                left: goalCoords[element.title].left,
+                right: goalCoords[element.title].right,
+                top: goalCoords[element.title].top,
+                bottom: goalCoords[element.title].bottom,
+              }
+            )
+          ) {
+            ref.current!.removeEventListener('touchmove', touchMove)
+            ref.current!.removeEventListener('touchend', touchEnd)
+            ref.current!.style.top = goalCoords[element.title].top + 'px'
+            ref.current!.style.left = goalCoords[element.title].left + 'px'
+            setGoalsReached((prev: any) => prev + 1)
+          } else {
+            ref.current!.style.top = top + 'px'
+            ref.current!.style.left = left + 'px'
+          }
+        }
+        ref.current!.addEventListener('touchmove', touchMove)
+        ref.current!.addEventListener('touchend', touchEnd)
+      }
+    }, [])
+    return (
+      <>
+        <div
+          ref={ref}
+          className={classes.container__imageContainer}
+          key={element.title}
+          id={`${index}`}
+        >
+          <img src={element.svg} className={classes.container__img_known} />
+        </div>
+      </>
+    )
+  }
+)
