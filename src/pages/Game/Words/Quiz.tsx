@@ -4,6 +4,10 @@ import classes from './WordsGame.module.css'
 import StageContext from '../../../context'
 import {useHistory} from 'react-router'
 import {music} from '../../../music/music'
+import close from './svg/close.svg'
+import ok from './svg/ok.svg'
+import kid from './svg/kid.svg'
+import confetti from './svg/confetti.gif'
 
 export const Quiz: FC<{words: any}> = ({words}) => {
   // Приветственный фон
@@ -40,6 +44,9 @@ export const Quiz: FC<{words: any}> = ({words}) => {
           }}
         >
           <h1>УРА!!!</h1>
+
+          <img src={kid} className={classes.kidUra} />
+          <img src={confetti} className={classes.confetti} />
         </div>
       )}
       {initialize && !isWin && currentRound < quizQuestions.length && (
@@ -132,6 +139,20 @@ const VariantContainer: FC<{
         disabled={iHaveDoneAChoose ? true : false}
       >
         <img src={variant.svg} alt={variant.title} />
+        <img
+          src={close}
+          className={`${classes.svg__simple} ${
+            wrong ? classes.svg__simple_wrong : classes.svg__simple_right
+          }`}
+        />
+        <img
+          src={ok}
+          className={`${classes.svg__simple} ${
+            congratulation
+              ? classes.svg__simple_wrong
+              : classes.svg__simple_right
+          }`}
+        />
       </button>
     </>
   )

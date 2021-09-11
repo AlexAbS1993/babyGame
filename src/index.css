@@ -11,18 +11,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-:root{
-  --game-color: #F55693;
-  --primary-color: #F54013;
-  --border-color: #F51D28;
-  --button-background-color: #F5B000;
+:root {
+  --game-color: #dbb6b3;
+  --primary-color: #db8b23;
+  --border-color: #000000;
+  --button-background-color: #f5b000;
   --button-font-size: 1.4em;
 }
 button {

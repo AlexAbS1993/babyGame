@@ -14,7 +14,7 @@ import christmas from '../svg/christmas.svg'
 import hedgehog from '../svg/hedgehog.svg'
 import zebra from '../svg/zebra.svg'
 import umbrella from '../svg/umbrella.svg'
-import grasshopper from '../svg/grasshopper.svg'
+import bug from '../svg/bug.svg'
 import giraffe from '../svg/giraffe.svg'
 import bus from '../svg/bus.svg'
 import pineapple from '../svg/pineapple.svg'
@@ -44,7 +44,7 @@ import cake from '../svg/cake.svg'
 import tractor from '../svg/tractor.svg'
 import sunny from '../svg/sunny.svg'
 import dog from '../svg/dog.svg'
-
+import yod from '../svg/yod.svg'
 
 type imagesList = {
     [key: string]: {
@@ -166,7 +166,7 @@ export const images: imagesList = {
             title: "Жук",
             cathegory: "animals",
             discription: "Жук жужжит",
-            svg: grasshopper
+            svg: bug
         }, {
             title: "Жираф",
             cathegory: 'animals',
@@ -211,6 +211,12 @@ export const images: imagesList = {
             cathegory: 'animals',
             discription: "Просто потому что больше нет слов с Й",
             svg: york
+        },
+        {
+            title: "Йод",
+            cathegory: "home",
+            discription: "Как мастер йода только без а",
+            svg: yod
         }
     ],
     "K": [

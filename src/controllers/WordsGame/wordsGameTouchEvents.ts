@@ -33,7 +33,7 @@ export const WordsGameTouchEvents = {
         setTimeout(() => {
             setStage('quiz')
             setGameStageEnd(false)
-        }, 3000)
+        }, 1500)
     }
 }
 

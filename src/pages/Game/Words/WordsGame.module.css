@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
 .gameField {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10,21 +12,15 @@
 
 .gameField_gone {
   transform-origin: 0% 0%;
-  animation: gameFieldGoneAnimation 3s linear 0s forwards;
+  animation: gameFieldGoneAnimation 1.5s linear 0s forwards;
 }
 
 @keyframes gameFieldGoneAnimation {
   0% {
     transform: rotateZ(0deg) translateY(0%);
   }
-  10% {
-    transform: rotateZ(15deg) translateY(0%);
-  }
-  50% {
-    transform: rotateZ(5deg) translateY(10%);
-  }
   100% {
-    transform: rotateZ(5deg) translateY(100%);
+    transform: rotateZ(0deg) translateY(100%);
   }
 }
 
@@ -224,7 +220,7 @@
 }
 
 .quiz_wrong {
-  background-color: crimson;
+  background: none;
   transition: all 0.3s linear;
 }
 .quiz_simple {
@@ -235,20 +231,37 @@
 .win {
   width: 100%;
   height: 100%;
-  background-color: darkviolet;
+  background-color: rgb(55, 193, 218);
   display: grid;
   justify-content: center;
   align-items: center;
 }
 
 .win h1 {
+  position: relative;
   font-size: 8em;
+  text-align: center;
+  letter-spacing: 1px;
+  opacity: 0;
+  font-family: 'Roboto Slab', serif;
+  animation: h1Appearance 0.2s linear 0.5s forwards;
+  z-index: 2;
 }
+
+@keyframes h1Appearance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .variant {
   position: relative;
 }
 .quiz_cong {
-  background-color: chartreuse;
+  background: none;
   transition: 0.6s ease all;
 }
 .quiz_nocong {
@@ -256,9 +269,60 @@
 .quiz__button {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 .quiz__button img {
   object-fit: contain;
   width: 100%;
   height: 100%;
+}
+.svg__simple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 99;
+  left: 0;
+}
+
+.svg__simple_right {
+  opacity: 0;
+  transition: 0.6s ease all;
+}
+
+.svg__simple_wrong {
+  opacity: 1;
+  transition: 0.6s ease all;
+}
+.kidUra {
+  position: relative;
+  transform: translateY(-100%);
+  animation: kidAppearance 1.8s linear forwards;
+  z-index: 2;
+}
+
+@keyframes kidAppearance {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+.confetti {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transform: scale(0);
+  animation: confetiAppearance 2.5s forwards infinite;
+}
+
+@keyframes confetiAppearance {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
