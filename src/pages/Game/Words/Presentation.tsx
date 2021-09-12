@@ -4,9 +4,9 @@ import {WordsGameTouchEvents} from '../../../controllers/WordsGame/wordsGameTouc
 import classes from './WordsGame.module.css'
 
 export const Presentation: FC<{
-  setStage: any
+  setStageIndex: any
   words: any
-}> = ({setStage, words}) => {
+}> = ({setStageIndex, words}) => {
   const [step, setStep] = useState(0)
   const [startPos, setStartPos] = useState(0)
   const [gameStageEnd, setGameStageEnd] = useState(false)
@@ -49,7 +49,7 @@ export const Presentation: FC<{
         >
           <ButtonNextStepWrapper
             setGameStageEnd={setGameStageEnd}
-            setStage={setStage}
+            setStageIndex={setStageIndex}
           />
         </div>
       </div>
@@ -59,12 +59,12 @@ export const Presentation: FC<{
 
 type ButtonNextStepWrapperType = {
   setGameStageEnd: any
-  setStage: any
+  setStageIndex: any
 }
 
 const ButtonNextStepWrapper: FC<ButtonNextStepWrapperType> = ({
   setGameStageEnd,
-  setStage,
+  setStageIndex,
 }) => {
   useEffect(() => {
     return () => {
@@ -75,7 +75,7 @@ const ButtonNextStepWrapper: FC<ButtonNextStepWrapperType> = ({
     <Button
       events={{
         onClickEvent: (e: any) => {
-          WordsGameTouchEvents.nextStep(setGameStageEnd, setStage)
+          WordsGameTouchEvents.nextStep(setGameStageEnd, setStageIndex)
         },
       }}
       type="directionButton"

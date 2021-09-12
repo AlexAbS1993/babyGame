@@ -5,7 +5,6 @@ enum TouchEventsEnum {
     nextStep = "nextStep"
 }
 
-
 export const WordsGameTouchEvents = {
     [TouchEventsEnum.touchStart]: (e: TouchEvent, setStartPos: (coords: number) => void) => {
         setStartPos(e.touches[0].clientX)
@@ -28,10 +27,10 @@ export const WordsGameTouchEvents = {
             }
         }
     },
-    [TouchEventsEnum.nextStep]: (setGameStageEnd: (arg: boolean) => void, setStage: (stage: 'quiz' | 'presentation') => void) => {
+    [TouchEventsEnum.nextStep]: (setGameStageEnd: (arg: boolean) => void, setStageIndex: (prev: (prev: number) => number) => void) => {
         setGameStageEnd(true)
         setTimeout(() => {
-            setStage('quiz')
+            setStageIndex((prev: number) => prev + 1)
             setGameStageEnd(false)
         }, 1500)
     }

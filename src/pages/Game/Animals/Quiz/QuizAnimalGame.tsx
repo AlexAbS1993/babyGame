@@ -7,7 +7,10 @@ import {animalListType} from '../Presentation/Presentation.types'
 import {QuizAnimalGameTypes} from './Quiz.types'
 import classes from './QuizAnimal.module.css'
 
-export const QuizAnimalGame: FC<QuizAnimalGameTypes> = ({animalList}) => {
+export const QuizAnimalGame: FC<QuizAnimalGameTypes> = ({
+  animalList,
+  setStageIndex,
+}) => {
   const [getCurrentStep, setCurrentStep] = useState(0)
   const [initialize, setInitialize] = useState(false)
   const [getAnimalSortedSeparatedList, setAnimalSortedSeparatedList] = useState<
@@ -31,7 +34,9 @@ export const QuizAnimalGame: FC<QuizAnimalGameTypes> = ({animalList}) => {
       config.animalGame.countOfAnimals / config.animalGame.rounds
     ) {
       if (getCurrentStep === config.animalGame.rounds - 1) {
-        console.log('ПОБЕДА')
+        setTimeout(() => {
+          setStageIndex((prev: any) => prev + 1)
+        }, config.delays.AnimalGame.quizSetWin)
       } else {
         setGoalsReached(0)
         setCountDropZone(0)

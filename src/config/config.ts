@@ -6,7 +6,8 @@ export const config = {
     animalGame: {
         countOfAnimals: 6,
         __rows: 2,
-        rounds: 2
+        rounds: 2,
+        __stages: ["presentation", "quiz"]
     },
     // ==== КОНСТАНТЫ ДЛЯ ИГРЫ В БУКВЫ ==== //
     wordGame: {
@@ -14,6 +15,7 @@ export const config = {
         wordsPortion: 3,
         __wordsCount: 33,
         chooseVariants: 3,
+        __stages: ["presentation", "quiz"],
         __wordsCountPresentation: 2,
         __potentialWordsParties: 7 // Должно быть 11
     },
@@ -21,5 +23,12 @@ export const config = {
     Settings: {
         musicMuted: false,
         volume: 0.1
+    },
+    delays: {
+        AnimalGame: {
+            presentationEndOfStage: 1100,
+            presentatitonEnableAllButtons: 500,
+            quizSetWin: 700
+        }
     }
 }

@@ -1,15 +1,14 @@
 import {FC, useContext, useEffect, useState} from 'react'
 import {quizCreator} from './functions'
 import classes from './WordsGame.module.css'
-import StageContext from '../../../context'
-import {useHistory} from 'react-router'
 import {music} from '../../../music/music'
 import close from './svg/close.svg'
 import ok from './svg/ok.svg'
-import kid from './svg/kid.svg'
-import confetti from './svg/confetti.gif'
 
-export const Quiz: FC<{words: any}> = ({words}) => {
+export const Quiz: FC<{words: any; setStageIndex: any}> = ({
+  words,
+  setStageIndex,
+}) => {
   // Приветственный фон
   const [isGreetings, setGreetings] = useState(true)
   // Список вопросов в викторине
@@ -18,38 +17,20 @@ export const Quiz: FC<{words: any}> = ({words}) => {
   const [initialize, setInitialize] = useState(false)
   // Какой раунд, победил ли пользователь, сделал ли он правильный выбор (для блокировки кнопки)
   const [currentRound, setCurrentRound] = useState(0)
-  const [isWin, setWin] = useState(false)
   const [iHaveDoneAChoose, setDoneChoose] = useState(false)
   // Использования контекста и роутинга для переброса в меню
-  const {stage, setStage} = useContext(StageContext)
-  const history = useHistory()
   useEffect(() => {
     setQuizQuestions(quizCreator(words))
     setInitialize(true)
   }, [])
   useEffect(() => {
     if (initialize && currentRound === quizQuestions.length) {
-      setWin(true)
-      music.quizWin()
+      setStageIndex((prev: any) => prev + 1)
     }
   }, [currentRound])
   return (
     <>
-      {isWin && (
-        <div
-          className={classes.win}
-          onClick={() => {
-            setStage('menu')
-            history.push('/')
-          }}
-        >
-          <h1>УРА!!!</h1>
-
-          <img src={kid} className={classes.kidUra} />
-          <img src={confetti} className={classes.confetti} />
-        </div>
-      )}
-      {initialize && !isWin && currentRound < quizQuestions.length && (
+      {initialize && currentRound < quizQuestions.length && (
         <section className={classes.qiuz}>
           <div className={classes.qiuz__letter}>
             <div

@@ -3,7 +3,7 @@ import {ImagePickType, PresentationComponentType} from './Presentation.types'
 import classes from './Presentation.module.css'
 import {config} from '../../../../config/config'
 export const PresentationAnimalGame: FC<PresentationComponentType> = ({
-  setStage,
+  setStageIndex,
   animalList,
 }) => {
   const [getHowChecked, setChecked] = useState(0)
@@ -15,8 +15,8 @@ export const PresentationAnimalGame: FC<PresentationComponentType> = ({
   useEffect(() => {
     if (getHowChecked === config.animalGame.countOfAnimals) {
       setTimeout(() => {
-        setStage('quiz')
-      }, 900)
+        setStageIndex((prev: any) => prev + 1)
+      }, config.delays.AnimalGame.presentationEndOfStage)
     }
     return () => {
       clearTimeout()
@@ -62,7 +62,7 @@ const ImagePick: FC<ImagePickType> = ({
           setDisabledAllButtons(true)
           setTimeout(() => {
             setDisabledAllButtons(false)
-          }, 500)
+          }, config.delays.AnimalGame.presentatitonEnableAllButtons)
         })()
       : setDisabledAllButtons(false)
     setChecked((prev: any) => {

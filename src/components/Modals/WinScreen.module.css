@@ -1,0 +1,61 @@
+.win {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(55, 193, 218);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.win h1 {
+  position: relative;
+  font-size: 8em;
+  text-align: center;
+  letter-spacing: 4px;
+  opacity: 0;
+  font-family: 'Roboto Slab', serif;
+  animation: h1Appearance 0.2s linear 0.5s forwards;
+  z-index: 2;
+}
+
+@keyframes h1Appearance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.kidUra {
+  position: relative;
+  transform: translateY(-100%);
+  animation: kidAppearance 1.8s linear forwards;
+  z-index: 2;
+}
+
+@keyframes kidAppearance {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-10%);
+  }
+}
+.confetti {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transform: scale(0);
+  animation: confetiAppearance 2.5s forwards infinite;
+}
+
+@keyframes confetiAppearance {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
