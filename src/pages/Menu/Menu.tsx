@@ -19,7 +19,7 @@ const buttons: buttonsMainMenuTypes[] = [
   },
   {
     title: 'Настройки',
-    option: 'submenu',
+    option: 'page',
     svg: settings,
   },
   {

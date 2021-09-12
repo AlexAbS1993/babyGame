@@ -2,12 +2,13 @@ import {Author} from '../pages/Author/Author'
 import {AnimalGame} from '../pages/Game/Animals/AnimalGame'
 import {WordsGame} from '../pages/Game/Words/WordsGame'
 import {Menu} from '../pages/Menu/Menu'
+import {Settings} from '../pages/Settings/Settings'
 import {Test} from '../pages/Test/Test'
 
 type RouteType = {
   path: string
   exact: boolean
-  component: React.FC
+  component: React.FC<any>
 }
 
 export enum Routes {
@@ -16,6 +17,7 @@ export enum Routes {
   author = '/author',
   test = '/test_dev',
   animalGame = '/gameAnimal',
+  setting = '/settings',
 }
 
 export const GameRoutes: RouteType[] = [
@@ -46,5 +48,10 @@ export const MenuRoutes: RouteType[] = [
     path: Routes.test,
     exact: true,
     component: Test,
+  },
+  {
+    path: Routes.setting,
+    exact: true,
+    component: Settings,
   },
 ]

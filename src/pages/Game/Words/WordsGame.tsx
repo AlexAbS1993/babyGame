@@ -9,7 +9,6 @@ import {Quiz} from './Quiz'
 export const WordsGame = () => {
   const [stageIndex, setStageIndex] = useState(0)
   const [isWin, setIsWin] = useState(false)
-  console.log(isWin)
   const [words, setWords] = useState<any>([])
   const {stage, setStage} = useContext(StageContext)
   const [initialize, setInitialize] = useState(false)
