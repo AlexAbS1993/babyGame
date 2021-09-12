@@ -72,4 +72,10 @@ class Config {
             }
         }
     }
+    getMusicSettings() {
+        return {
+            volume: this.Settings.volume,
+            muted: this.Settings.musicMuted
+        }
+    }
 }
