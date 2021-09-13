@@ -1,0 +1,21 @@
+.canvas {
+  border: 2px solid black;
+  grid-area: canvas;
+}
+.side {
+  grid-area: info;
+  padding: 10px;
+  border: 2px solid white;
+}
+.canvas__holst {
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-auto-columns: 1fr 1fr;
+  grid-template-areas: 'info canvas';
+  gap: 10px;
+}
