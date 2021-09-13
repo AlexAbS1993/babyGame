@@ -9,10 +9,12 @@ export const Button: FC<ButtonTypes<'directionButton' | 'menuButton'>> = ({
   buttonChangesFunc,
   text,
   disabled,
+  buttonType,
 }) => {
   return (
     <>
       <button
+        type={buttonType}
         disabled={disabled}
         onClick={events.onClickEvent}
         onTouchEnd={events.onTouchEndEvent}

@@ -4,6 +4,7 @@ import {WordsGame} from '../pages/Game/Words/WordsGame'
 import {Menu} from '../pages/Menu/Menu'
 import {Settings} from '../pages/Settings/Settings'
 import {Test} from '../pages/Test/Test'
+import {Statistic} from '../pages/Statistic/Statistic'
 
 type RouteType = {
   path: string
@@ -18,6 +19,7 @@ export enum Routes {
   test = '/test_dev',
   animalGame = '/gameAnimal',
   setting = '/settings',
+  statistic = '/statistic',
 }
 
 export const GameRoutes: RouteType[] = [
@@ -53,5 +55,10 @@ export const MenuRoutes: RouteType[] = [
     path: Routes.setting,
     exact: true,
     component: Settings,
+  },
+  {
+    path: Routes.statistic,
+    exact: true,
+    component: Statistic,
   },
 ]
