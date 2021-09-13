@@ -1,3 +1,4 @@
+import { music } from './../../music/music';
 
 enum TouchEventsEnum {
     touchStart = "touchStart",
@@ -12,9 +13,9 @@ export const WordsGameTouchEvents = {
     [TouchEventsEnum.touchEnd]: (e: TouchEvent, startPos: number, step: number, words: any[], setStep: (coords: any) => any) => {
         if (e.changedTouches[0].clientX < startPos - 150) {
             if (step + 1 === words.length) {
-                console.log('end')
             }
             else {
+                music.swipe()
                 setStep((prev: number) => prev + 1)
             }
         }
@@ -23,6 +24,7 @@ export const WordsGameTouchEvents = {
                 return
             }
             else {
+                music.swipe()
                 setStep((prev: number) => prev - 1)
             }
         }

@@ -36,7 +36,9 @@ export const MenuWrapper: FC<MenuWrapperTypes> = ({
         currentMenuStage={currentMenuStage}
         setStage={setStage}
       />
-      <div className={classes.login}>Привет, {currentUser}</div>
+      <div className={classes.login}>
+        Привет, {currentUser !== 'none' ? currentUser : 'малыш'}
+      </div>
       {children}
     </>
   )

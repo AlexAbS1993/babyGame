@@ -4,6 +4,7 @@ import classes from './WordsGame.module.css'
 import {music} from '../../../music/music'
 import close from './svg/close.svg'
 import ok from './svg/ok.svg'
+import {addStatistic} from '../../../controllers/Statistic/statistic'
 
 export const Quiz: FC<{words: any; setStageIndex: any}> = ({
   words,
@@ -99,6 +100,7 @@ const VariantContainer: FC<{
             music.rightAnswer()
             setCongratulation(true)
             setDoneChoose(true)
+            addStatistic('right')
             setTimeout(() => {
               setCongratulation(false)
               setDoneChoose(false)
@@ -112,6 +114,7 @@ const VariantContainer: FC<{
           } else {
             music.wrongAnswer()
             setWrong(true)
+            addStatistic('wrong')
             setTimeout(() => {
               setWrong(false)
             }, 1000)

@@ -47,7 +47,7 @@ export class Config {
     }
     setInitialSettings() {
         !localStorage.getItem(this.localStorage.listOfUsers) && localStorage.setItem(this.localStorage.listOfUsers, JSON.stringify([]))
-        !localStorage.getItem(this.localStorage.foundedField) && localStorage.setItem(this.localStorage.foundedField, JSON.stringify(""))
+        !localStorage.getItem(this.localStorage.foundedField) && localStorage.setItem(this.localStorage.foundedField, 'none')
         !localStorage.getItem(this.localStorage.statisticField) && localStorage.setItem(this.localStorage.statisticField, JSON.stringify({}))
     }
     getMusicSettings() {

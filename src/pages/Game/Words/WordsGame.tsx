@@ -2,6 +2,7 @@ import {useContext, useEffect, useState} from 'react'
 import {WinScreen} from '../../../components/Modals/WinScreen'
 import {config} from '../../../config/config'
 import StageContext from '../../../context'
+import {addStatistic} from '../../../controllers/Statistic/statistic'
 import {wordChooser} from './functions'
 import {Presentation} from './Presentation'
 import {Quiz} from './Quiz'
@@ -21,6 +22,7 @@ export const WordsGame = () => {
   }, [])
   useEffect(() => {
     if (stageIndex === config.wordGame.__stages.length) {
+      addStatistic('games')
       setIsWin(true)
     }
   }, [stageIndex])

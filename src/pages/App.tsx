@@ -5,7 +5,7 @@ import StageContext from '../context'
 import {
   getUserFromLocalStorage,
   isUserInLocalStorage,
-} from '../controllers/Main/logIn'
+} from '../controllers/LoginPage/logIn'
 import {GameRoutes, MenuRoutes} from '../routes/Router'
 import classes from './App.module.css'
 import {stageAppType} from './App.types'

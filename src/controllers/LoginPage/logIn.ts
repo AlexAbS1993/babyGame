@@ -1,4 +1,4 @@
-import { config } from './../../config/config';
+import { config } from '../../config/config';
 export const getUserFromLocalStorage = () => {
     let user: string = localStorage.getItem(config.localStorage.foundedField)!
     return user

@@ -1,12 +1,11 @@
-import React, {useContext, useState} from 'react'
+import {useContext, useState} from 'react'
 import {useHistory} from 'react-router'
 import {Button} from '../../components/Buttons/Button'
 import StageContext from '../../context'
 import {
-  addUserInLocalStorage,
-  isUserExists,
-  rememberUser,
-} from '../../controllers/Main/logIn'
+  loginSubmitEnterEvent,
+  toMyMenuEvent,
+} from '../../controllers/LoginPage/LoginEvents'
 import classes from './LogIn.module.css'
 
 export const LogIn = () => {
@@ -21,15 +20,7 @@ export const LogIn = () => {
         </div>
         <form
           onSubmit={(e) => {
-            e.preventDefault()
-            if (isUserExists(name)) {
-              setCurrentUser(name)
-              rememberUser(name)
-            } else {
-              addUserInLocalStorage(name)
-              setCurrentUser(name)
-            }
-            history.push('/')
+            loginSubmitEnterEvent(e, name, history, setCurrentUser)
           }}
           className={`${classes.login_form} ${classes.form}`}
         >
@@ -63,7 +54,7 @@ export const LogIn = () => {
             }}
             events={{
               onClickEvent: (e) => {
-                history.push('/')
+                toMyMenuEvent(history)
               },
             }}
             subtype="simple"
@@ -74,6 +65,7 @@ export const LogIn = () => {
             }}
           />
           <Button
+            disabled={currentUser === 'none'}
             buttonChangesFunc={() => {
               return `${classes.form__button}`
             }}
@@ -86,7 +78,13 @@ export const LogIn = () => {
             type="menuButton"
             buttonType="button"
             text={() => {
-              return <> Статистика {currentUser} </>
+              return (
+                <>
+                  {' '}
+                  Статистика{' '}
+                  {currentUser === 'none' ? 'недоступна' : currentUser}
+                </>
+              )
             }}
           />
         </form>
