@@ -1,4 +1,4 @@
-import {Author} from '../pages/Author/Author'
+import {LogIn} from '../pages/LogIn/LogIn'
 import {AnimalGame} from '../pages/Game/Animals/AnimalGame'
 import {WordsGame} from '../pages/Game/Words/WordsGame'
 import {Menu} from '../pages/Menu/Menu'
@@ -14,7 +14,7 @@ type RouteType = {
 export enum Routes {
   wordGame = '/gameWords',
   start = '/',
-  author = '/author',
+  login = '/login',
   test = '/test_dev',
   animalGame = '/gameAnimal',
   setting = '/settings',
@@ -40,9 +40,9 @@ export const MenuRoutes: RouteType[] = [
     component: Menu,
   },
   {
-    path: Routes.author,
+    path: Routes.login,
     exact: true,
-    component: Author,
+    component: LogIn,
   },
   {
     path: Routes.test,

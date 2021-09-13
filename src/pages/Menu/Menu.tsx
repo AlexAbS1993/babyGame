@@ -23,7 +23,7 @@ const buttons: buttonsMainMenuTypes[] = [
     svg: settings,
   },
   {
-    title: 'Автор',
+    title: 'Логин',
     option: 'page',
     svg: poet,
   },

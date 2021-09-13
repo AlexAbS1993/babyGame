@@ -6,6 +6,7 @@ export class Config {
     public wordGame
     public Settings
     public delays
+    public localStorage
     constructor() {
         this.general = {
             devMode: true
@@ -38,6 +39,16 @@ export class Config {
                 quizSetWin: 700
             }
         }
+        this.localStorage = {
+            foundedField: "user",
+            statisticField: "statistic",
+            listOfUsers: "listOfUsers"
+        }
+    }
+    setInitialSettings() {
+        !localStorage.getItem(this.localStorage.listOfUsers) && localStorage.setItem(this.localStorage.listOfUsers, JSON.stringify([]))
+        !localStorage.getItem(this.localStorage.foundedField) && localStorage.setItem(this.localStorage.foundedField, JSON.stringify(""))
+        !localStorage.getItem(this.localStorage.statisticField) && localStorage.setItem(this.localStorage.statisticField, JSON.stringify({}))
     }
     getMusicSettings() {
         return {

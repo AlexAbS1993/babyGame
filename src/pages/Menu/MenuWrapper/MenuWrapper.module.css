@@ -1,11 +1,18 @@
 .button__back {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    width: 50px;
-    height: 50px;
-    clip-path: path('M50 20 L50 30 L35 30 L35 50 L0 25 L35 0 L35 20 Z');
-    background-color: chartreuse;
-    border: none;
-    outline: none;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 50px;
+  height: 50px;
+  clip-path: path('M50 20 L50 30 L35 30 L35 50 L0 25 L35 0 L35 20 Z');
+  background-color: chartreuse;
+  border: none;
+  outline: none;
+}
+.login {
+  position: absolute;
+  left: 82%;
+  top: 10px;
+  color: rgb(20, 26, 44);
+  font-size: 1.1em;
 }

@@ -44,8 +44,8 @@ export const MenuButtonWrapper: FC<ButtonWrapperType> = ({
             setSubMenu(buttonElement.title)
           } else if (buttonElement.option === 'page') {
             switch (buttonElement.title) {
-              case 'Автор': {
-                history.push(Routes.author)
+              case 'Логин': {
+                history.push(Routes.login)
                 return
               }
               case 'Настройки': {

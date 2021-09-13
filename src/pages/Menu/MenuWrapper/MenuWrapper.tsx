@@ -1,10 +1,12 @@
-import {FC} from 'react'
+import {FC, useContext} from 'react'
 import {useHistory} from 'react-router'
 import {Button} from '../../../components/Buttons/Button'
 import {config} from '../../../config/config'
 import {music} from '../../../music/music'
 import {Routes} from '../../../routes/Router'
 import {currentMenuStage, MenuWrapperTypes} from './MenuWrapper.types'
+import classes from './MenuWrapper.module.css'
+import StageContext from '../../../context'
 const hierarchy = [
   {
     node: 'root',
@@ -27,12 +29,14 @@ export const MenuWrapper: FC<MenuWrapperTypes> = ({
   currentMenuStage,
   setStage,
 }) => {
+  const {currentUser} = useContext(StageContext)
   return (
     <>
       <MenuButtonWrapper
         currentMenuStage={currentMenuStage}
         setStage={setStage}
       />
+      <div className={classes.login}>Привет, {currentUser}</div>
       {children}
     </>
   )
