@@ -14,7 +14,7 @@ export function isUserExists(name: string) {
 
 export function addUserInLocalStorage(name: string) {
     localStorage.setItem(config.localStorage.listOfUsers, JSON.stringify([...JSON.parse(localStorage.getItem(config.localStorage.listOfUsers)!), name]))
-    localStorage.setItem(config.localStorage.statisticField, JSON.stringify({ ...JSON.parse(localStorage.getItem(config.localStorage.statisticField)!), [name]: {} }))
+    localStorage.setItem(config.localStorage.statisticField, JSON.stringify({ ...JSON.parse(localStorage.getItem(config.localStorage.statisticField)!), [name]: [] }))
     localStorage.setItem(config.localStorage.foundedField, name)
 }
 
